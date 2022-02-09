@@ -5,7 +5,7 @@ class ImportPacienteController {
     constructor(private importPacienteUseCase:ImportPacienteUseCase) {}
 
     handle(){
-        this.importPacienteUseCase.execute()
+       this.importPacienteUseCase.execute()
     }
 
 }

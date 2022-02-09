@@ -5,7 +5,7 @@ const Paciente = require("../../models/paciente.ts")
 
 class ImportPacienteUseCase {
 
-    execute() {
+    async execute () {
         console.log(typeof Paciente)
         const stream  = fs.readFileSync(pacientePath)
         let pacientes : [object]= JSON.parse(stream.toString())
@@ -18,7 +18,7 @@ class ImportPacienteUseCase {
                 if(Paciente.findOne(paciente.cpf)){
                     console.log(`"Erro ao Cadastrar o Paciente: ${paciente.nome} => Cpf ja cadastrado\n`)
                 }else {
-                    console.log("Erro ao Cadastrar Paciente: " +paciente.nome + error[1])
+                    console.log("Erro ao Cadastrar Paciente: " +paciente.nome + error)
                 }
             }
         })
