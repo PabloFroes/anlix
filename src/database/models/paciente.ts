@@ -1,11 +1,11 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model, Types, Query, Model, SchemaTypeOptions } from "mongoose";
 
 interface Paciente {
 		nome: string;
 		idade: number;
 	    cpf: string;
 		rg: string;
-		data_nasc: Date;
+		data_nasc: string;
 		sexo: string;
 		signo: string;
 		mae: string;
@@ -20,7 +20,7 @@ interface Paciente {
 		estado: string;
 		telefone_fixo: string;
 		celular: string;
-		altura: number;
+		altura: string;
 		peso: number;
 		tipo_sanguineo: string;
 		cor: string;
@@ -37,7 +37,7 @@ const pacienteSchema = new Schema<Paciente>({
     idade: {type: Number},
     cpf: {type: String, required: true, unique: true},
     rg: {type: String, required: true, unique: true},
-    data_nasc: {type: Date},
+    data_nasc: {type: String},
     sexo: {type: String, required: true},
     signo: {type: String},
     mae: {type: String, required: true},
@@ -52,7 +52,7 @@ const pacienteSchema = new Schema<Paciente>({
     estado: {type: String, required: true},
     telefone_fixo: {type: String},
     celular: {type: String, required: true},
-    altura: {type: Number},
+    altura: {type: String},
     peso: {type: Number},
     tipo_sanguineo: {type: String, required: true},
     cor: {type: String},
@@ -64,4 +64,4 @@ const pacienteSchema = new Schema<Paciente>({
     }
 })
 
-export default model("Paciente", pacienteSchema )
+export = model("Paciente", pacienteSchema )

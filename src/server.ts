@@ -11,8 +11,8 @@ app.get("/", (request, response) => {
     response.json("Hello World !!!!!");
 })
 
-conveterFileController.handle()
+//conveterFileController.handle()
 importPacienteController.handle()
-importCardiacoController.handle()
+//importCardiacoController.handle()
 
 app.listen(3333)
