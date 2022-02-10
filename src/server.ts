@@ -1,13 +1,18 @@
 import express  from "express";
 
 import "./database/config/database"
+
+import { router } from "./routes";
+
 import { importPacienteController } from "./database/useCases/importPaciente";
-import { conveterFileController } from "./database/useCases/converterFile";
 import { importCardiacoController } from "./database/useCases/importIndiceCardiaco";
-import Paciente from "./database/models/paciente";
 import IndiceCardiaco from "./database/models/indiceCardiaco";
 
 const app = express()
+
+app.use(express.json())
+app.use(router)
+
 
 app.get("/refresh/p",async (request, response) => {
     importPacienteController.handle()
@@ -18,15 +23,6 @@ app.get("/refresh/c",async (request, response) => {
     response.json("Refresh Heart");
 })
 
-app.get("/paciente/:cpf",async (request, response) => {
-    const {cpf} = request.params
-    try {
-        const paciente = await Paciente.find({cpf})
-        response.json(paciente)
-    } catch (error) {
-        
-    }
-})
 
 app.get("/indexcard/:cpf",async (request, response) => {
     const {cpf} = request.params
