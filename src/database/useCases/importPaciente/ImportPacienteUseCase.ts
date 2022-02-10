@@ -5,14 +5,13 @@ const Paciente = require("../../models/paciente.ts")
 
 class ImportPacienteUseCase {
 
-    async execute () {
-        console.log(typeof Paciente)
+    execute () {
         const stream  = fs.readFileSync(pacientePath)
         let pacientes : [object]= JSON.parse(stream.toString())
-        pacientes.forEach(async(paciente : typeof Paciente)=>{
+        pacientes.forEach((paciente : typeof Paciente)=>{
             const newPaciente = new Paciente(paciente)
             try {
-                await newPaciente.save()
+                newPaciente.save()
                 console.log("Paciente Cadastrado: " + paciente.nome)
             } catch (error) {
                 if(Paciente.findOne(paciente.cpf)){

@@ -1,9 +1,8 @@
 import fs from "fs";
 const indice_cardiacoPath = "./dados/indice_cardiaco/";
-import {parse as csvParse, parse, Parser} from "csv-parse"
 const IndiceCardiaco = require("../../models/indiceCardiaco")
 import * as fastcsv from 'fast-csv';
-
+const Paciente = require("../../models/paciente.ts")
 
 class ImportIndiceCardiacoUseCase {
 
@@ -46,12 +45,10 @@ class ImportIndiceCardiacoUseCase {
         return fileName.split('.')[1] === 'csv'
     }
 
-
-
-
-    addToDataBase(fileName: string,dataLine) {
+    async addToDataBase(fileName: string,dataLine) {
             const [cpf, epoc, ind_card] = dataLine
-            const indice_cardiaco = new IndiceCardiaco({date: fileName.slice(0,8),cpf,epoc,ind_card})
+            const paciente = await (Paciente.findOne({cpf}))
+            const indice_cardiaco = new IndiceCardiaco({date: fileName.slice(0,8),cpf,epoc,ind_card,paciente})
             try {
                 indice_cardiaco.save()
                 //console.log(line)

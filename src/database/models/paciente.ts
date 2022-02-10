@@ -25,9 +25,7 @@ interface Paciente {
 		tipo_sanguineo: string;
 		cor: string;
         características: {
-            indice_cardiaco: Types.ObjectId;
             last_indice_cardiaco: Types.ObjectId;
-            indice_pulmonar: Types.ObjectId;
             last_indice_pulmonar: Types.ObjectId;
         }
 }
@@ -57,9 +55,7 @@ const pacienteSchema = new Schema<Paciente>({
     tipo_sanguineo: {type: String, required: true},
     cor: {type: String},
     características: {
-        indice_cardiaco: {type: Schema.Types.ObjectId, ref:'IndiceCardiaco'},
         last_indice_cardiaco: {type: Schema.Types.ObjectId, ref:'IndiceCardiaco'},
-        indice_pulmonar: {type: Schema.Types.ObjectId, ref:'IndicePulmonar'},
         last_indice_pulmonar: {type: Schema.Types.ObjectId, ref:'IndicePulmonar'},
     }
 })
