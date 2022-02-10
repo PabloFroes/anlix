@@ -60,4 +60,6 @@ const pacienteSchema = new Schema<Paciente>({
     }
 })
 
+pacienteSchema.index({"nome": "text"})
+
 export = model("Paciente", pacienteSchema )
