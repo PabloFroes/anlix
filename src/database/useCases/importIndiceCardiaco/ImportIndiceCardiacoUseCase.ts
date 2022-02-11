@@ -3,6 +3,7 @@ const indice_cardiacoPath = "./dados/indice_cardiaco/";
 const IndiceCardiaco = require("../../models/indiceCardiaco")
 import * as fastcsv from 'fast-csv';
 const Paciente = require("../../models/paciente.ts")
+import { convertStringToDate } from "../middleware/convertStringToDate";
 
 class ImportIndiceCardiacoUseCase {
 
@@ -48,7 +49,7 @@ class ImportIndiceCardiacoUseCase {
     async addToDataBase(fileName: string,dataLine: [string,number,number]) {
             const [cpf, epoc, ind_card] = dataLine
             const paciente = await (Paciente.findOne({cpf}))
-            const date = this.convertStringToDate(fileName)
+            const date = convertStringToDate(fileName)
             const indice_cardiaco = new IndiceCardiaco({date:date,cpf,epoc,ind_card,paciente})
             try {
                 indice_cardiaco.save()
@@ -57,14 +58,6 @@ class ImportIndiceCardiacoUseCase {
                 console.log(fileName)
                 console.log(fileName + error)
         }
-    }
-
-    convertStringToDate(fileName: string): Date{
-        const month = parseInt(fileName.slice(0,2))
-        const day = parseInt(fileName.slice(2,4))
-        const year = parseInt(fileName.slice(4,8))
-        const date = new Date(year,month,day)
-        return date 
     }
 }
 
