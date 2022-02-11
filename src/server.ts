@@ -23,9 +23,9 @@ app.get("/refresh/c",async (request, response) => {
     response.json("Refresh Heart");
 })
 
-
 app.get("/indexcard/:cpf",async (request, response) => {
     const {cpf} = request.params
+
     try {
         const paciente = await IndiceCardiaco.find({cpf})
         response.json(paciente)
