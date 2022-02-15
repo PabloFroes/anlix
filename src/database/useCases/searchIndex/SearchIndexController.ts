@@ -7,7 +7,7 @@ import IndiceCardiaco from "../../models/indiceCardiaco";
 class SearchIndexController {
     constructor(private searchIndexUseCase: SearchIndexUseCase){}
 
-    handle (request : Request, response : Response, model : Model<any>, param) : Promise<Response> {
+    handle (request : Request, response : Response, param : string, model ?: Model<any>) : Promise<Response> {
         const index = this.searchIndexUseCase.execute(request,response,model,param)
         return index
     }

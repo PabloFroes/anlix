@@ -4,11 +4,16 @@ import { searchIndexController } from "../database/useCases/searchIndex";
 
 const indexPacientesRoutes = Router()
 
-indexPacientesRoutes.get("/card/:cpf",async (request, response) => {
-    searchIndexController.handle(request,response,IndiceCardiaco,"cpf")
+indexPacientesRoutes.get("/all/:cpf",async (request, response) => {
+    searchIndexController.handle(request,response,"ALL")
 })
+
+indexPacientesRoutes.get("/card/:cpf",async (request, response) => {
+    searchIndexController.handle(request,response,"CPF", IndiceCardiaco)
+})
+
 indexPacientesRoutes.get("/card/date/:date",async (request, response) => {
-    searchIndexController.handle(request,response,IndiceCardiaco,"date")
+    searchIndexController.handle(request,response, "DATE", IndiceCardiaco)
 })
 
 
