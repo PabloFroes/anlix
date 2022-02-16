@@ -4,12 +4,12 @@
 
 Os arquivos texto localizados no diretório dados apresentam diversas características sobre pacientes terminais internados em um hospital, que  são fornecidos por áreas distintas e sempre serão fornecidos separadamente. Os arquivos texto fornecidos por uma mesma área estão nomeados com datas distintas, pois retratam características dos pacientes em diferentes dias. Precisamos que você crie um software que contenha uma base de dados consultável através de uma API REST capaz de:
 
-* Consultar, para cada paciente, cada uma das características individualmente e cada uma delas sendo a mais recente disponível;
-* Consultar em uma única chamada, todas as características de um paciente, com os valores mais recentes de cada uma;
-* Consultar para uma determinada data (dia, mês e ano), todas as características existentes de todos os pacientes da base de dados;
+* x Consultar, para cada paciente, cada uma das características individualmente e cada uma delas sendo a mais recente disponível;
+* X Consultar em uma única chamada, todas as características de um paciente, com os valores mais recentes de cada uma;
+* x Consultar para uma determinada data (dia, mês e ano), todas as características existentes de todos os pacientes da base de dados;
 * Consultar uma característica qualquer de um paciente para um intervalo de datas a ser especificado na chamada da API;
 * Consultar o valor mais recente de uma característica de um paciente que esteja entre um intervalo de valores a ser especificado na chamada da API;
-* Consultar pacientes que contenham um nome ou parte de um nome a ser especificado na chamada da API.
+* x Consultar pacientes que contenham um nome ou parte de um nome a ser especificado na chamada da API.
 
 Além disso, precisamos que algumas informações estejam disponíveis em uma interface web. É importante ressaltar que o diretor do hospital necessita exibir essa interface para todos os investidores da instituição e também para o corpo de médicos. Os requisitos são os seguintes:
 

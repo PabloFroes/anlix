@@ -2,8 +2,9 @@ import mongoose from "mongoose"
 mongoose.Promise = global.Promise
 
 import { conveterFileController } from "../useCases/converterFile";
-import { importCardiacoController } from "../useCases/importIndiceCardiaco";
 import { importPacienteController } from "../useCases/importPaciente";
+import { importCardiacoController } from "../useCases/importIndiceCardiaco";
+import { importPulmonarController } from "../useCases/importIndicePulmonar";
 
 mongoose.connect('mongodb://localhost/anlixDB')
     .then(() => console.log("Connection Successful"))
@@ -16,4 +17,5 @@ async function startImport () {
     conveterFileController.handle()
     importPacienteController.handle()
     importCardiacoController.handle()
+    importPulmonarController.handle()
 }
