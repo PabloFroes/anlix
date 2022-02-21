@@ -12,7 +12,7 @@ class ImportPacienteUseCase {
             const newPaciente = new Paciente(paciente)
             try {
                 newPaciente.save()
-                console.log("Paciente Cadastrado: " + paciente.nome)
+                //console.log("Paciente Cadastrado: " + paciente.nome)
             } catch (error) {
                 if(Paciente.findOne(paciente.cpf)){
                     console.log(`"Erro ao Cadastrar o Paciente: ${paciente.nome} => Cpf ja cadastrado\n`)

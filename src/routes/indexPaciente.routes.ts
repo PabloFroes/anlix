@@ -8,6 +8,9 @@ const indexPacientesRoutes = Router()
 indexPacientesRoutes.get("/:cpf",async (request, response) => {
     searchIndexController.handle(request,response,"ALL")
 })
+indexPacientesRoutes.get("/name/:name",async (request, response) => {
+    searchIndexController.handle(request,response,"ALLNAME")
+})
 
 indexPacientesRoutes.get("/card/:cpf",async (request, response) => {
     searchIndexController.handle(request,response,"CPF", IndiceCardiaco)

@@ -15,6 +15,8 @@ class SearchIndexUseCase {
                 return await this.searchByDate(request, response, model)
             case "ALL":
                 return await this.searchAllByPacienteCpf(request,response)   
+            case "ALLNAME":
+                return await this.searchAllByPacienteName(request,response) 
             default : 
                 return response.json("Invalid Param for search")
         }
@@ -40,6 +42,21 @@ class SearchIndexUseCase {
             
         }
     }
+
+    async searchAllByPacienteName(request : Request ,response : Response){
+        const allIndex = []
+        const {name} = request.params
+        try {
+            const pacientes = await Paciente.find({nome : {'$regex' : name, '$options' : 'i'} })
+            pacientes.forEach((paciente)=>{
+                allIndex.push({"Nome" : paciente.nome, "lastIndexCard" : paciente.características.last_indice_cardiaco,"lastIndexPulm" : paciente.características.last_indice_pulmonar })
+            })
+            return response.json(allIndex)
+        } catch (error) {
+            
+        }
+    }
+
     async searchByDate(request : Request ,response : Response, model : Model<any>){
         const {date} = request.params
         const fDate = convertStringToDate(date)

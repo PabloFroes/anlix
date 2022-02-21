@@ -26,10 +26,10 @@ class SearchPacienteUseCase {
     }
 
     private async findByName(request: Request, response: Response): Promise<Response>{
-        const {name} = request.body
+        const {name} = request.params
         try {
+            console.log(name)
             const paciente = await Paciente.find({nome : {'$regex' : name, '$options' : 'i'} })
-            //console.log(paciente)
             return response.json(paciente)
         } catch (error) {
         }

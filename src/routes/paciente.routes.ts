@@ -8,7 +8,7 @@ pacienteRoutes.get("/cpf/:cpf",async (request : Request, response: Response) => 
     return await searchPacienteController.handle(request,response, "CPF")
 })
 
-pacienteRoutes.get("/name",async (request, response) => {
+pacienteRoutes.get("/name/:name",async (request, response) => {
     return await searchPacienteController.handle(request,response, "NAME")
 })
 

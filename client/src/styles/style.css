@@ -1,0 +1,39 @@
+.content{
+    padding: 15px;
+    background-color: #cedced;
+    width: 60%;
+    min-width: 180px;
+    max-width: 800px;
+    min-height: 80vh;
+    margin: auto;
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #cedced;
+    box-shadow: 0 0 6px 1px #000000
+}
+
+.search{
+    color: black;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+.search p{
+    color: black
+}
+
+.content-title{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.listPatient{
+    margin-top: 30px;
+}
+
+.listPatient li{
+    margin-top: 20px;
+}
